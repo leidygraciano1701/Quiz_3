@@ -1,0 +1,66 @@
+-Punto 1
+
+CREATE TABLESPACE Quiz3
+ DATAFILE 'DATAQ1' SIZE 50M,
+          'DATAQ2' SIZE 50M
+ EXTENT MANAGEMENT LOCAL AUTOALLOCATE;
+ 
+ -- Punto 2
+
+CREATE PROFILE estudiante_quiz LIMIT 
+  FAILED_LOGIN_ATTEMPTS  5; 
+
+ --Punto 3
+ CREATE USER carlos_1 IDENTIFIED BY carlos_1 
+ DEFAULT TABLESPACE Quiz3 QUOTA UNLIMITED ON Quiz3;
+ 
+ 
+CREATE ROLE RolQuiz3;
+GRANT estudiante_quiz to RolQuiz3;
+
+ GRANT CONNECT TO carlos_1;
+ GRANT estudiante_quiz TO carlos_1;
+ GRANT CREATE TABLE TO carlos_1;
+ 
+ -- Punto 4
+CREATE USER user2 IDENTIFIED BY user2 
+DEFAULT TABLESPACE Quiz3 QUOTA UNLIMITED ON Quiz3;
+
+GRANT CONNECT TO user2;
+GRANT estudiante_quiz TO user2;
+
+--Parte 2
+
+create table icfes (
+	tipo_documento 	varchar2(255),
+	nacionalidad		varchar2(255),
+	genero					varchar2(255),
+	fecha_nacimiento	date,
+	periodo					varchar2(255),
+	consecutivo			varchar2(255),
+	departamento_residencia	varchar2(255),
+	codigo_departamento_residencia	integer,
+	municipio_residencia		varchar2(255),
+	codigo_municipio_residencia	varchar2(255),
+	estrato					varchar2(255),
+	educacion_padre	varchar2(255),
+	educacion_madre	varchar2(255),
+	tiene_internet	varchar2(255),
+	tiene_tv				varchar2(255),
+	tiene_lavadora	varchar2(255),
+	tiene_horno_micro_o_gas	varchar2(255),
+	tiene_automovil	varchar2(255),
+	tiene_motocicleta	varchar2(255),
+	tiene_consola_videojuegos	varchar2(255),
+	colegio_codigo_icfes	varchar2(255),
+	colegio_codigo_dane		varchar2(255),
+	colegio_nombre				varchar2(255),
+	puntaje_lectura_critica	integer,
+	puntaje_matematicas		integer,
+	puntaje_ciencias_naturales	integer,
+	puntaje_sociales			integer,
+	puntaje_ingles				integer,
+	desempeno_ingles			varchar2(255),
+	puntaje_global				integer
+);
+
